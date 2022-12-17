@@ -45,7 +45,7 @@ export type AppRouter = typeof appRouter;
 
 ### index.ts
 
-```
+```ts
 import cors from "@fastify/cors";
 import fastify from "fastify";
 import { inferAsyncReturnType } from "@trpc/server";
@@ -101,20 +101,18 @@ server.register(cors, {
 
 `npx tailwindcss init -p`
 
-```
+```ts
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
-```
+```yaml
 env:
   browser: true
   es2021: true
@@ -133,7 +131,7 @@ plugins:
 rules: { "react/jsx-uses-react": "off", "react/react-in-jsx-scope": "off" }
 ```
 
-```
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -141,7 +139,7 @@ rules: { "react/jsx-uses-react": "off", "react/react-in-jsx-scope": "off" }
 
 ### trpc.ts
 
-```
+```ts
 import { createTRPCReact } from "@trpc/react-query";
 import type { AppRouter } from "../../server/router";
 
@@ -150,7 +148,7 @@ export const trpc = createTRPCReact<AppRouter>();
 
 ### App.tsx
 
-```
+```tsx
 import { useState } from "react";
 import { httpBatchLink } from "@trpc/client";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
@@ -185,7 +183,7 @@ export default App;
 
 ### TodoList.tsx
 
-```
+```tsx
 import { useState } from "react";
 import { trpc } from "./trpc";
 
