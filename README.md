@@ -82,19 +82,8 @@ export type AppRouter = typeof appRouter;
 ```ts
 import cors from "@fastify/cors";
 import fastify from "fastify";
-import { inferAsyncReturnType } from "@trpc/server";
-import {
-  CreateFastifyContextOptions,
-  fastifyTRPCPlugin,
-} from "@trpc/server/adapters/fastify";
+import { fastifyTRPCPlugin } from "@trpc/server/adapters/fastify";
 import { appRouter } from "./router";
-
-const createContext = ({ req, res }: CreateFastifyContextOptions) => {
-  const todo = { todo: req.headers.todo ?? "hoge" };
-  return { req, res, todo };
-};
-
-export type Context = inferAsyncReturnType<typeof createContext>;
 
 const server = fastify();
 
